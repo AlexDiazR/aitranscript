@@ -11,6 +11,7 @@ function App() {
       ).then(
         data => {
           setData(data)
+          console.log(data)
         }
       )
   }, [])
@@ -34,7 +35,7 @@ function App() {
           console.log(output)
         }
       )
-  }, [])
+  }, [transcript])
 
   return (
     <div>
@@ -42,6 +43,13 @@ function App() {
         <p>Loading...</p>
       ) : (
         data.members.map((member, i) => (
+          <p key={i}>{member}</p>
+        ))
+      )}
+      {(typeof transcript.getTranscript === 'undefined') ? (
+        <p>Loading transcript...</p>
+      ) : (
+        transcript.getTranscript.map((member, i) => (
           <p key={i}>{member}</p>
         ))
       )}
